@@ -1,6 +1,7 @@
 ﻿
 using eTickets.Data.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eTickets.Models
 {
@@ -17,6 +18,22 @@ namespace eTickets.Models
         public DateTime EndDate { get; set; }
 
         public MovieCategory MovieCategory { get; set; }
+
+        //RelationShips
+
+        public List<Actor_Movie> Actors_Movies { get; set; } = new List<Actor_Movie>();
+
+        //Cinema
+        public Cinema? Cinema { get; set; }
+
+        [ForeignKey("CinemaId")]
+        public int CinemaId { get; set; }
+
+        //Producer
+        public Producer? Producer { get; set; }
+
+        [ForeignKey("ProducerId")]
+        public int ProducerId { get; set; }
 
     }
 }
