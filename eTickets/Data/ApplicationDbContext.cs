@@ -5,9 +5,8 @@ namespace eTickets.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptionsBuilder<ApplicationDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            base.OnConfiguring(options);
         }
 
         public DbSet<Actor> Actors { get; set; }
