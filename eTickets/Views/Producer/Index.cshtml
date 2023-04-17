@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Producer>
+@{
+	ViewData["Producers"] = "Producers List";
+}
+
+
+<figure class="text-center">
+	<blockquote class="blockquote">
+		<h3>Producers</h3>
+	</blockquote>
+	<figcaption class="blockquote-footer">
+		<p>Corporate <cite title="Assholes">Assholes</cite></p>
+	</figcaption>
+</figure>
+
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(x => x.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(x => x.ProfilePictureURL)
+			</th>
+			<th>
+				@Html.DisplayNameFor(x => x.FullName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(x => x.Bio)
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			@foreach(var item in Model)
+			{
+				<tr>
+				<td>@Html.DisplayFor(modelItem => item.Id)</td>
+				<td>@Html.DisplayFor(modelItem => item.ProfilePictureURL)</td>
+				<td>@Html.DisplayFor(modelItem => item.FullName)</td>
+				<td>@Html.DisplayFor(modelItem => item.Bio)</td>
+				</tr>
+			}
+		</tr>
+	</tbody>
+</table>
+
+
+
+<hr />
+<a asp-action="Index" asp-controller="Home">Back to Home</a>
+
+
+

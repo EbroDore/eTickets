@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Actor>
+
+@{
+	ViewData["Actors"] = "Actors List";
+}
+
+
+<div>
+	<h1> Actors</h1>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(x => x.Id)
+				</th>
+				<th>
+					@Html.DisplayNameFor(x => x.ProfilePictureURL)
+				</th>
+				<th>
+					@Html.DisplayNameFor(x => x.FullName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(x => x.Bio)
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Id)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ProfilePictureURL)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FullName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Bio)
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<hr />
+<a asp-action="Index" asp-controller="Home">Back to Home</a>

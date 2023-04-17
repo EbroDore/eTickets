@@ -12,7 +12,7 @@ using eTickets.Data;
 namespace eTickets.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230410013307_Init")]
+    [Migration("20230414125900_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -29,7 +29,8 @@ namespace eTickets.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ActorId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -45,6 +46,21 @@ namespace eTickets.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Actors");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>
+                {
+                    b.Property<int>("ActorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ActorId", "MovieId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("Actors_Movies");
                 });
 
             modelBuilder.Entity("eTickets.Models.Cinema", b =>
@@ -73,9 +89,13 @@ namespace eTickets.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("MovieId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CinemaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -95,10 +115,17 @@ namespace eTickets.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("ProducerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CinemaId");
+
+                    b.HasIndex("ProducerId");
 
                     b.ToTable("Movies");
                 });
@@ -123,6 +150,64 @@ namespace eTickets.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producers");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Actor_Movie", b =>
+                {
+                    b.HasOne("eTickets.Models.Actor", "Actor")
+                        .WithMany("Actors_Movies")
+                        .HasForeignKey("ActorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTickets.Models.Movie", "Movie")
+                        .WithMany("Actors_Movies")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Movie", b =>
+                {
+                    b.HasOne("eTickets.Models.Cinema", "Cinema")
+                        .WithMany("Movies")
+                        .HasForeignKey("CinemaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTickets.Models.Producer", "Producer")
+                        .WithMany("Movies")
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cinema");
+
+                    b.Navigation("Producer");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Actor", b =>
+                {
+                    b.Navigation("Actors_Movies");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Cinema", b =>
+                {
+                    b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Movie", b =>
+                {
+                    b.Navigation("Actors_Movies");
+                });
+
+            modelBuilder.Entity("eTickets.Models.Producer", b =>
+                {
+                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Cinema>
+@{
+	ViewData["Cinema"] = "Cinema List";
+}
+
+
+
+<figure class="text-center">
+	<blockquote class="blockquote">
+		<h3>Cinemas</h3>
+	</blockquote>
+	<figcaption class="blockquote-footer">
+		<p>Eat Food, Watch Movie,  <cite title="Good Time">Good Time</cite></p>
+	</figcaption>
+</figure>
+
+
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(x => x.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(x => x.Logo)
+			</th>
+			<th>
+				@Html.DisplayNameFor(x => x.Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(x => x.Description)
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			@foreach(var item in Model)
+			{
+				<tr>
+				<td>@Html.DisplayFor(modelItem => item.Id)</td>
+				<td>@Html.DisplayFor(modelItem => item.Logo)</td>
+				<td>@Html.DisplayFor(modelItem => item.Name)</td>
+				<td>@Html.DisplayFor(modelItem => item.Description)</td>
+				</tr>
+			}
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+<hr />
+
+<a asp-action="Index" asp-controller="Home">Back to Home</a>
