@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Cinema>
 @{
-	ViewData["Cinema"] = "Cinema List";
+	ViewData["Title"] = "Cinema List";
 }
 
 
@@ -20,9 +20,6 @@
 	<thead>
 		<tr>
 			<th>
-				@Html.DisplayNameFor(x => x.Id)
-			</th>
-			<th>
 				@Html.DisplayNameFor(x => x.Logo)
 			</th>
 			<th>
@@ -38,8 +35,9 @@
 			@foreach(var item in Model)
 			{
 				<tr>
-				<td>@Html.DisplayFor(modelItem => item.Id)</td>
-				<td>@Html.DisplayFor(modelItem => item.Logo)</td>
+				<td>
+					<img class="rounded-circle" src="@item.Logo" style="max-width: 150px" />
+				</td>
 				<td>@Html.DisplayFor(modelItem => item.Name)</td>
 				<td>@Html.DisplayFor(modelItem => item.Description)</td>
 				</tr>

@@ -15,7 +15,11 @@ namespace eTickets.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			var movies = await _context.Movies.ToListAsync();
+			//Added the include Cinemas so I could refernece the properties in the Movie ViewS
+
+			var movies = await _context.Movies
+				.Include(c => c.Cinema)
+				.ToListAsync();
 			return View(movies);
 		}
 	}

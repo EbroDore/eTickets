@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Producer>
 @{
-	ViewData["Producers"] = "Producers List";
+	ViewData["Title"] = "Producers List";
 }
 
 
@@ -9,7 +9,7 @@
 		<h3>Producers</h3>
 	</blockquote>
 	<figcaption class="blockquote-footer">
-		<p>Corporate <cite title="Assholes">Assholes</cite></p>
+		<p>Corporate <cite title="Stooges">Stooges</cite></p>
 	</figcaption>
 </figure>
 
@@ -17,9 +17,6 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>
-				@Html.DisplayNameFor(x => x.Id)
-			</th>
 			<th>
 				@Html.DisplayNameFor(x => x.ProfilePictureURL)
 			</th>
@@ -36,8 +33,9 @@
 			@foreach(var item in Model)
 			{
 				<tr>
-				<td>@Html.DisplayFor(modelItem => item.Id)</td>
-				<td>@Html.DisplayFor(modelItem => item.ProfilePictureURL)</td>
+				<td>
+					<img class="rounded-circle" src="@item.ProfilePictureURL" style="max-width: 150px" />
+				</td>
 				<td>@Html.DisplayFor(modelItem => item.FullName)</td>
 				<td>@Html.DisplayFor(modelItem => item.Bio)</td>
 				</tr>
