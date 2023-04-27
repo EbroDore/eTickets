@@ -46,15 +46,53 @@ namespace eTickets.Controllers
 		}
 
 
+		
 		public IActionResult Details(int id)
 		{
-			var a = _service.GetById(id);
+			var actor = _service.GetById(id);
 
-			if (a == null)
+			if (actor == null)
 			{
 				return NotFound();
 			}
-			return View(a);
+			return View(actor);
+		}
+
+		[HttpGet]
+		public IActionResult Edit(int id)
+		{
+			var actor = _service.GetById(id);
+			return View(actor);
+		}
+
+		[HttpPost]
+		public IActionResult Edit(int id, [Bind("Id, FullName, ProfilePictureURL, Bio")]Actor actor)
+		{
+			if (!ModelState.IsValid)
+			{
+				return NotFound();
+			}
+			_service.Update(id, actor);
+			return RedirectToAction(nameof(Index));
+		}
+
+		[HttpGet]
+		public IActionResult Delete(int id)
+		{
+			var actor = _service.GetById(id);
+			return View(actor);
+		}
+
+		[HttpPost]
+		public IActionResult DeleteConfirmed(int id)
+		{
+			var actor = _service.GetById(id);
+			if(actor == null)
+			{
+				return NotFound();
+			}
+			_service.Delete(id);
+			return RedirectToAction(nameof(Index));
 		}
 	}
 }

@@ -20,7 +20,9 @@ namespace eTickets.Data.Services
 
 		public void Delete(int id)
 		{
-			throw new NotImplementedException();
+			var actor = _context.Actors.FirstOrDefault(p => p.Id == id);
+			_context.Actors.Remove(actor);
+			_context.SaveChanges();
 		}
 
 		public async Task<IEnumerable<Actor>> GetAll()
@@ -37,7 +39,9 @@ namespace eTickets.Data.Services
 
 		public Actor Update(int id, Actor newActor)
 		{
-			throw new NotImplementedException();
+			_context.Update(newActor);
+			_context.SaveChanges();
+			return newActor;
 		}
 	}
 }

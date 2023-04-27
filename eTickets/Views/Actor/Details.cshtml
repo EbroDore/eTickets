@@ -34,7 +34,7 @@
 
 				<div class="form-group">
 					<input asp-action="Create" asp-controller="Actor" type="submit" value="Create" class="btn btn-outline-success float-right" />
-					<a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.Id">Show All</a>
+					<a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.Id">Edit Actor</a>
 					<a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
 
 				</div>
@@ -50,6 +50,11 @@
 		$(document).ready(function() {
 			var output = document.getElementById('ProfilePicturePreview');
 			output.src = $("ProfilePictureURL").val();
+		})
+
+		$("#ProfilePictureURL").on("change", function() {
+			var output = document.getElementById('ProfilePicturePreview');
+			output.src = $(this).val();
 		})
 	</script>
 }
