@@ -2,6 +2,7 @@
 using eTickets.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Linq.Expressions;
 
 namespace eTickets.Data.Base
 {
@@ -60,5 +61,13 @@ namespace eTickets.Data.Base
             
             
         }
-    }
+
+		public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeproperty)
+		{
+            IQueryable<T> query = _context.Set<T>();
+            query = includeproperty.Aggregate(query, (current, includeproperty) => current.Include(includeproperty));
+            return await query.ToListAsync();
+
+		}
+	}
 }
