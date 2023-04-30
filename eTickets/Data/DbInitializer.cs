@@ -15,6 +15,10 @@ namespace eTickets.Data
 
 
                 // to see if the database information exists
+                if (context == null)
+                {
+                    Console.WriteLine("You Got Nothing Here");
+                }
                 context.Database.EnsureCreated();
 
 

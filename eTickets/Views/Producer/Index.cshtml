@@ -14,40 +14,53 @@
 </figure>
 
 
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th>
-				@Html.DisplayNameFor(x => x.ProfilePictureURL)
-			</th>
-			<th>
-				@Html.DisplayNameFor(x => x.FullName)
-			</th>
-			<th>
-				@Html.DisplayNameFor(x => x.Bio)
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
+<div>
+	<h1> Producers</h1>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(x => x.ProfilePictureURL)
+				</th>
+				<th>
+					@Html.DisplayNameFor(x => x.FullName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(x => x.Bio)
+				</th>
+				<th>
+					Actions
+				</th>
+			</tr>
+		</thead>
+		<tbody>
 			@foreach(var item in Model)
 			{
 				<tr>
-				<td>
-					<img class="rounded-circle" src="@item.ProfilePictureURL" style="max-width: 150px" />
-				</td>
-				<td>@Html.DisplayFor(modelItem => item.FullName)</td>
-				<td>@Html.DisplayFor(modelItem => item.Bio)</td>
+					<td class="align-middle">
+						<img class="rounded-circle" src="@item.ProfilePictureURL" style="max-width: 150px" />
+					</td>
+					<td class="align-middle">
+						@Html.DisplayFor(modelItem => item.FullName)
+					</td>
+					<td class="align-middle">
+						@Html.DisplayFor(modelItem => item.Bio)
+					</td>
+					<td class="align-middle">
+						<a class="btn btn-outline-primary" asp-action="Edit" asp-controller="Producer" asp-route-id="@item.Id"><i class="bi bi-pencil-square">Edit</i></a>
+						<a class="btn btn-outline-info" asp-action="Details" asp-controller="Producer" asp-route-id="@item.Id"><i class="bi bi-eye">Details</i></a>
+						<a class="btn btn-outline-danger" asp-action="Delete" asp-controller="Producer" asp-route-id="@item.Id"><i class="bi bi-pencil-square">Delete</i></a>
+					</td>
 				</tr>
 			}
-		</tr>
-	</tbody>
-</table>
-
-
+		</tbody>
+	</table>
+</div>
 
 <hr />
-<a asp-action="Index" asp-controller="Home">Back to Home</a>
+<a asp-action="Index" asp-controller="Movie">Back to Home</a>
+<hr />
+<a asp-controller="Producer" asp-action="Create"  class="btn btn-success"> <i class="bi bi-plus-circle"></i> Create Producer</a>
 
 
 
