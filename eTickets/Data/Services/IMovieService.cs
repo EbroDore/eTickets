@@ -10,5 +10,7 @@ namespace eTickets.Data.Services
 		Task<NewMovieDropDowns> GetNewMovieDropDownsValues();
 
 		Task AddNewMovieAsync(NewMovieVM data);
-	}
+        Task UpdateNewMovieAsync(NewMovieVM data);
+
+    }
 }
