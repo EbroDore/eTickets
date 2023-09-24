@@ -51,4 +51,4 @@
 <hr />
 <a asp-action="Index" asp-controller="Movie">Back to Home</a>
 <hr />
-<a asp-controller="Actor" asp-action="Create"  class="btn btn-success"> <i class="bi bi-plus-circle"></i> Create Actor</a>
+@await Html.PartialAsync("_CreateItem", "Actor")
