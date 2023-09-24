@@ -16,7 +16,24 @@ namespace eTickets.Controllers
 			_service = service;
 		}
 
-		public async Task<IActionResult> Index()
+        public async Task<IActionResult> Filter(string searchString)
+        {
+
+            //Added the include Cinemas so I could refernece the properties in the Movie Views
+
+            var movies = await _service.GetAllAsync(m => m.Cinema);
+
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				var filteredResult = movies.Where(n => n.Name.Contains(searchString) || n.Description.Contains(searchString))
+					.ToList();
+				return View("Index", filteredResult);
+			}
+            return View("Index", movies);
+        }
+
+
+        public async Task<IActionResult> Index()
 		{
 			//Added the include Cinemas so I could refernece the properties in the Movie Views
 
