@@ -85,3 +85,4 @@ C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\
 C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\net6.0\eTickets.pdb
 C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\net6.0\eTickets.genruntimeconfig.cache
 C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\net6.0\ref\eTickets.dll
+C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\net6.0\eTickets.sourcelink.json
