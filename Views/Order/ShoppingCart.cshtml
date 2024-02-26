@@ -3,6 +3,10 @@
 	ViewData["Title"] = "Shopping Cart Summary";
 }
 
+<head>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+</head>
 
 
 
@@ -28,7 +32,7 @@
 						<td class="allign-middle">@item.Amount</td>
 						<td class="allign-middle">@item.Movie.Name</td>
 						<td class="allign-middle">@item.Movie.Price.ToString("c")</td>
-						<td class="allign-middle">@((item.Amount*item.Movie.Price).ToString("c"))</td>
+						<td class="allign-middle">@((item.Amount * item.Movie.Price).ToString("c"))</td>
 						<td class="allign-middle">
 							<a class="text-danger" asp-controller="Order" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Movie.Id">
 								<i class="bi bi-cart-dash"></i>
@@ -53,11 +57,14 @@
 			</tfoot>
 		</table>
 
-		<div class="text-center">
+		<div class="text-right ">
 			<div class="btn-group">
-				<a class="btn btn-outline-primary" asp-action="CompleteOrder">
+				@* <a class="btn btn-outline-primary" asp-action="CompleteOrder">
 					Complete Order
-				</a>
+				</a> *@
+				<div  id="paypal-btn"></div>
+				<span style="padding: 5px"></span>
+				
 				<a class="btn btn-outline-success" asp-controller="Movie" asp-action="Index">
 					Add More Items
 				</a>
@@ -66,3 +73,52 @@
 
 	</div>
 </div>
+
+
+@section Scripts {
+	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+	<script>
+
+		let _total = @Html.Raw(Model.ShoppingCartTotal);
+
+		paypal.Button.render({
+			// Configure environment
+			env: 'sandbox',
+			client: {
+				sandbox: 'AenBmeekI2mXRFn9TVuFEJloXuhanTlul1D0XCdQineFeZC3cTbdzjAiCU5saKwmiWmiMm6Fn7byRTdv'
+			},
+
+			// Customize button
+			locale: 'en_US',
+			style: {
+				size: 'responsive',
+				color: 'blue',
+				shape: 'pill'
+			},
+			commit: true,
+
+			// Set up Payment
+			payment: function (data, actions) {
+				return actions.payment.create({
+					transactions: [{
+						amount: {
+							total: _total,
+							currency: 'USD'
+						}
+					}]
+				});
+			},
+
+			// Execute the Payment
+			onAuthorize: function (data, actions) {
+				return actions.payment.execute().then(function () {
+					var url = '@Url.Action("CompleteOrder", "Order", new { })';
+					window.location.href = url;
+				})
+
+				
+			}
+		}, '#paypal-btn');
+	</script>
+}
