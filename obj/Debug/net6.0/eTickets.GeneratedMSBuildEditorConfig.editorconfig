@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Brody Bond/Desktop/Random C\# Demo projects/eTickets/eTickets/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Brody Bond/Desktop/Random C\# Demo projects/eTickets/eTickets/Views/Actor/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
