@@ -86,3 +86,8 @@ C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\
 C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\net6.0\eTickets.genruntimeconfig.cache
 C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\net6.0\ref\eTickets.dll
 C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\obj\Debug\net6.0\eTickets.sourcelink.json
+C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Brody Bond\Desktop\Random C# Demo projects\eTickets\eTickets\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
